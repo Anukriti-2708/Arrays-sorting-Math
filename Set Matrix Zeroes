@@ -1,0 +1,53 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(matrix[i][j]==0){
+                 infect (matrix, i, j);
+                }
+            }
+        }
+        
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[0].length;j++){
+                if(matrix[i][j]==-9999){
+                    matrix[i][j] =0;
+                }
+            }
+        }
+    }
+    
+    
+    public void infect(int[][]matrix, int i,int j){
+        int s = i;
+        int t =j;
+        
+       while(s<matrix.length){
+            if(matrix[s][j]!= 0)
+           matrix[s][j] = -9999;
+           s++;
+           
+       }
+        
+        while(t< matrix[0].length){
+             if(matrix[i][t]!= 0)
+            matrix[i][t] = -9999;
+            t++;
+        }
+        
+        s =i;
+        t = j;
+        
+        while(s >= 0){
+            if(matrix[s][j]!= 0)
+            matrix[s][j] = -9999;
+            s--;
+        }
+        
+        while(t>=0){
+             if(matrix[i][t]!= 0)
+            matrix[i][t] = -9999;
+            t--;
+        }
+    }
+}
